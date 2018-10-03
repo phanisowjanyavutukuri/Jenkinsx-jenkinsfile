@@ -1,7 +1,5 @@
 spring:
   application:
     name: discovery-service
-  cloud:
-    config:
-      uri:
-      - http://104.154.62.234:30000
+  profiles: 
+    active: prod
