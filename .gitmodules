@@ -1,0 +1,6 @@
+[submodule "commons"]
+	path = commons
+	url = http://35.188.95.38/Intelligent_systems/commons.git
+[submodule "commons-config"]
+	path = commons-config
+	url = http://35.188.95.38/Intelligent_systems/commons-config.git
