@@ -1,0 +1,14 @@
+From maven:3.3.9
+
+COPY ./ /discovery-service/
+#RUN chmod -R 777 / intelligent-systems-test/
+WORKDIR  /discovery-service/
+RUN mvn clean  install
+
+From maven:3.3.9
+RUN mkdir  /discovery-service/
+WORKDIR  /discovery-service/
+COPY --from=0  /discovery-service/  .
+WORKDIR  /discovery-service/discovery-service/
+#CMD ["mvn spring-boot", "run"]
+cmd mvn spring-boot:run
