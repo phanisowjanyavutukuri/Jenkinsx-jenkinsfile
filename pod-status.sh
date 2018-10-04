@@ -9,6 +9,6 @@ if [[ $var =~ $var2 ]]
 then
  echo "Pod is deployed successfully"
 else
-    kubectl rollout undo deployment/$DEPLOYMENT_NAME --revision=1
+    kubectl rollout undo deployment/$DEPLOYMENT_NAME --to-revision=1
 fi
 }
