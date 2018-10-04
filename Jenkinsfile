@@ -93,7 +93,7 @@ stage('deploying and exposing discovery service') {
 
         source pod-service.sh; application_service   cloudwms-discovery-service 30001  30001
         
-        sleep 100
+        sleep 1
         
         OLD_IMAGE=$(kubectl get deployment cloudwms-discovery-service -o=jsonpath='{$.spec.template.spec.containers[:1].image}' -n cloudwms-dev)
         
