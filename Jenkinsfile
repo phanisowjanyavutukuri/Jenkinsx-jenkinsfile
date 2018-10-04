@@ -94,6 +94,7 @@ stage('deploying and exposing discovery service') {
         source pod-service.sh; application_service   cloudwms-discovery-service 30001  30001 
         
         source pod-status.sh; pod_status  cloudwms-discovery-service $OLD_IMAGE 
+        '''
   }
   }
   }
