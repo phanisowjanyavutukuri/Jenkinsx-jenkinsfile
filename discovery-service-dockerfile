@@ -15,8 +15,6 @@
 
 
 FROM maven
-RUN apt update
-RUN apt install git
 COPY . /java/
 WORKDIR /java/
 RUN mvn clean install
