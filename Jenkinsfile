@@ -76,6 +76,10 @@ stage('deploying and exposing discovery service') {
     
     TAG_NAME=$(git rev-parse HEAD)
   IMAGE_TAG=${TAG_NAME:0:7}
+  
+  
+  OLD_IMAGE=$(kubectl get deployment cloudwms-discovery-service -o=jsonpath='{$.spec.template.spec.containers[:1].image}' -n cloudwms-dev)
+  
         kubectl config set-credentials cloudwmsuser --username=$SECRET_USERNAME --password=$SECRET_PASSWORD
 
         kubectl config set-cluster cloudwmscluster --insecure-skip-tls-verify=true --server=https://35.239.186.113
@@ -89,6 +93,8 @@ stage('deploying and exposing discovery service') {
         source pod-deployment.sh; application_deployment gcr.io/cloudwms-195710/discovery-service cloudwms-discovery-service 1 $IMAGE_TAG 8082
 
         source pod-service.sh; application_service   cloudwms-discovery-service 30001  30001 
+        
+        source pod-status.sh; pod-status  cloudwms-discovery-service $OLD_IMAGE 
          
    '''
         }
