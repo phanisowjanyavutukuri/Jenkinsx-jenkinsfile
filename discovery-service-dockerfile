@@ -15,9 +15,21 @@
 
 
 FROM maven
+RUN apt update
+RUN apt install git
 COPY . /java/
 WORKDIR /java/
-RUN ls
+RUN git init
+RUN git clone http://cloudwms:cloudwms@35.188.95.38/Intelligent_systems/commons.git
+
+WORKDIR /java/commons
+RUN mvn clean package install
+WORKDIR /java/
 RUN mvn clean install
-WORKDIR  /java/
-CMD mvn spring-boot:run
+
+FROM maven
+WORKDIR /java/
+COPY --from=0  /java/commons/target/ .
+COPY --from=0  /java/target/ .
+WORKDIR /java/
+CMD java -jar discovery-service.jar
