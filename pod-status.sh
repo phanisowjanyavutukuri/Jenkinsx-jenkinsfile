@@ -9,6 +9,6 @@ if [[ $var =~ $var2 ]]
 then
  echo "Pod is deployed successfully"
 else
-    source rolling-bach.sh; rolling_back_script $DEPLOYMENT_NAME $IMAGE_NAME 
+    source rolling-back.sh; rolling_back_script $DEPLOYMENT_NAME $IMAGE_NAME 
 fi
 }
