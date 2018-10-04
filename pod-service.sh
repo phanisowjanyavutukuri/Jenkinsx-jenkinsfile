@@ -15,12 +15,13 @@ metadata:
   labels:
     run: $SERVICE_NAME
 spec:
-  type: NodePort
+  type: ClusterIp
+  clusterIP: 10.0.247.104
   ports:
   - port: $CONTAINER_PORT
     targetPort: $CONTAINER_PORT
     protocol: TCP
-    nodePort: $NODE_PORT
+    
   selector:
     app: $SERVICE_NAME  " | kubectl apply -f -
     }    
