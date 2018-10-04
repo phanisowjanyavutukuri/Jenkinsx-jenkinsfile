@@ -92,8 +92,7 @@ stage('deploying and exposing discovery service') {
         source pod-deployment.sh; application_deployment gcr.io/cloudwms-195710/discovery-service cloudwms-discovery-service 1 $IMAGE_TAG 8082
 
         source pod-service.sh; application_service   cloudwms-discovery-service 30001  30001 
-        
-        source pod-status.sh; pod_status  cloudwms-discovery-service $OLD_IMAGE 
+      
         '''
   }
   }
