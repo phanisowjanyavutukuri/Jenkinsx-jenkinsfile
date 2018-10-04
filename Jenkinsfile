@@ -91,7 +91,13 @@ stage('deploying and exposing discovery service') {
 
         source pod-deployment.sh; application_deployment gcr.io/cloudwms-195710/discovery-service cloudwms-discovery-service 1 $IMAGE_TAG 8082
 
-        source pod-service.sh; application_service   cloudwms-discovery-service 30001  30001 
+        source pod-service.sh; application_service   cloudwms-discovery-service 30001  30001
+        
+        sleep 100
+        
+        OLD_IMAGE=$(kubectl get deployment cloudwms-discovery-service -o=jsonpath='{$.spec.template.spec.containers[:1].image}' -n cloudwms-dev)
+        
+        source pod-status.sh; pod_status  cloudwms-discovery-service $OLD_IMAGE 
       
         '''
   }
