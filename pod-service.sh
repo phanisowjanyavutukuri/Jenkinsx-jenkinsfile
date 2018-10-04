@@ -15,7 +15,7 @@ metadata:
   labels:
     run: $SERVICE_NAME
 spec:
-  type: ClusterIp
+  type: ClusterIP
   clusterIP: 10.0.247.104
   ports:
   - port: $CONTAINER_PORT
