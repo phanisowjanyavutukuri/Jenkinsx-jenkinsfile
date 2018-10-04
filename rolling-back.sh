@@ -1,4 +1,4 @@
-function rolling-back-script()
+function rolling_back_script()
 {
 
 local DEPLOYMENT-NAME=${1:?Provide the DEPLOYMENT-NAME}
