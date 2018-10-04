@@ -1,4 +1,4 @@
-function pod-status()
+function pod_status()
 {
 
 local DEPLOYMENT_NAME=${1:?Provide the DEPLOYMENT-NAME}
