@@ -1,11 +1,21 @@
 function pod_status()
 {
-local DEPLOYMENT_NAME=${1:?Provide the DEPLOYMENT-NAME}
 
-var=$(kubectl rollout status deploy/$DEPLOYMENT_NAME -n cloudwms-dev)
+local DEPLOYMENT_NAME="nginx-deployment"
+
+var=$(kubectl rollout status deploy/$DEPLOYMENT_NAME )
 echo $var
-var2="deployment "cloudwms-discovery-service" successfully rolled out"
+var2="deployment \"nginx-deployment\" successfully rolled out"
+echo "var2"
 
-[ $var = $var2 ] &&  echo "pod is deployed successfully" || kubectl rollout undo deployment/$DEPLOYMENT_NAME --to-revision=1 -n cloudwms-dev
+
+
+
+if [ "$var" == "$var2" ] 
+then
+      echo "pod is deployed successfully"
+else
+     kubectl rollout undo deployment/$DEPLOYMENT_NAME --to-revision=1
+fi
 
 }
