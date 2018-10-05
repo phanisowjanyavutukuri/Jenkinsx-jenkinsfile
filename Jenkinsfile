@@ -93,7 +93,7 @@ stage('deploying and exposing discovery service') {
 
         source pod-service.sh; application_service   cloudwms-discovery-service 30001  30001
         
-        sleep 50
+        sleep 5
         
        
         
