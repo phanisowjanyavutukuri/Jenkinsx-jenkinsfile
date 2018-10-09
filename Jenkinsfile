@@ -85,6 +85,10 @@ stage('deploying and exposing discovery service') {
 
         kubectl config set-context cloudwmscontext --user=cloudwmsuser --namespace=cloudwms-dev --cluster=cloudwmscluster
 
+        wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: '$SECRET_PASSWORD', var: 'SECRET']]]) {
+        echo "$SECRET_PASSWORD";
+        echo "hi"
+
         kubectl config use-context cloudwmscontext
  
         kubectl get pods -n cloudwms-dev
