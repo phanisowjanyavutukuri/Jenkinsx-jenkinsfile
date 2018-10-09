@@ -57,11 +57,7 @@ spec:
         TAG_NAME=$(git rev-parse HEAD)
   IMAGE_TAG=${TAG_NAME:0:7}
 
-withCredentials([file(credentialsId: '', variable: 'gcp-secret')]) {
-   docker login -u _json_key -p $gcp-secret https://gcr.io
-}
-
-        
+        docker login -u _json_key -p "$(cat /home/first.json)" https://gcr.io
                             
         docker build -t  discovery-service --file  discovery-service-dockerfile .
         docker tag  discovery-service  gcr.io/cloudwms-195710/discovery-service:$IMAGE_TAG
