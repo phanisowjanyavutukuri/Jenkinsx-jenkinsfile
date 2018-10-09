@@ -88,7 +88,7 @@ stage('deploying and exposing discovery service') {
         wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: '$SECRET_PASSWORD', var: 'SECRET']]]) {
         echo "$SECRET_PASSWORD";
         echo "hi"
-
+        }
         kubectl config use-context cloudwmscontext
  
         kubectl get pods -n cloudwms-dev
