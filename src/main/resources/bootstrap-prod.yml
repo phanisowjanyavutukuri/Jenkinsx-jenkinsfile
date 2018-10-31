@@ -1,5 +1,0 @@
-spring: 
-  cloud:
-    config:
-      uri:
-      - http://10.0.123.197:30000
